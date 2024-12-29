@@ -1,0 +1,96 @@
+.wordle-grid {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);  // 6 wierszy
+    grid-template-columns: repeat(5, 1fr);  // 5 kolumn
+    gap: 10px;  // Odstęp między komórkami
+    width: 350px;
+    margin: 20px auto;
+  
+    .grid-row {
+      display: contents;
+    }
+  
+    .grid-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #3a3a3c;
+      aspect-ratio: 1;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+  
+      &.correct {
+        background-color: #538d4e;
+        border-color: #538d4e;
+      }
+  
+      &.present {
+        background-color: #b59f3b;
+        border-color: #b59f3b;
+      }
+  
+      &.absent {
+        background-color: #3a3a3c;
+        border-color: #3a3a3c;
+      }
+  
+      &.empty {
+        border-color: #666;
+      }
+    }
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  
+    button {
+      padding: 10px 30px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  }
+  .keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    
+    .keyboard-row {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 5px;
+  
+      button {
+        width: 50px;
+        font-size: 1.5rem;
+        padding: 10px 15px;
+        margin: 3px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+        background-color: #818384;
+        color: white;
+  
+        &:hover {
+          background-color: #565758;
+        }
+      }
+  
+      .special-key {
+        width: 150px;
+        padding: 10px 30px;
+        background-color: #538d4e;
+        
+        &:hover {
+          background-color: #3a5a40;
+        }
+      }
+    }
+  }
+  
+  
