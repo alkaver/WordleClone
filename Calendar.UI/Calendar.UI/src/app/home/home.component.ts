@@ -1,6 +1,6 @@
 import { CommonModule, NgForOf} from '@angular/common';
 import { Component, HostListener } from '@angular/core';
-import { GameService } from '../services/game.service';
+import { WordsService } from '../services/words.service';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +9,24 @@ import { GameService } from '../services/game.service';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  solution: string = '';
+
+  constructor(private wordsService: WordsService) {}
+
+  ngOnInit(): void {
+    this.wordsService.getWord().subscribe(
+      (response: string) => {
+        this.solution = response.trim().toUpperCase();
+        console.log('Wylosowane słowo:', this.solution);
+      }
+    )
+  }
   rows = Array(6).fill(null);
   cols = Array(5).fill(null);
   row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
   row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
   row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
 
-  
   // Obsługa klawiatury
   onKeyClick(key: string) {
     if (key === 'ENTER') {
@@ -30,7 +41,6 @@ export class HomeComponent {
 
   grid: string[][] = this.rows.map(() => Array(5).fill('')); // Tablica przechowująca litery
   validationGrid: string[][] = this.rows.map(() => Array(5).fill('')); // Tablica do walidacji (klasy do kolorowania)
-  solution = 'APPLE';  // Docelowe słowo
   currentRow = 0;
 
   // Wypełnianie liter - tylko przykład
