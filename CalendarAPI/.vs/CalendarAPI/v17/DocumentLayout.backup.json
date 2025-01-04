@@ -3,28 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|c:\\users\\micha\\desktop\\kalendarz\\calendarapi\\calendarapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|solutionrelative:calendarapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|c:\\users\\micha\\desktop\\kalendarz\\calendarapi\\calendarapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|solutionrelative:calendarapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|c:\\users\\micha\\desktop\\kalendarz\\calendarapi\\calendarapi\\controllers\\wordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|solutionrelative:calendarapi\\controllers\\wordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|c:\\users\\micha\\desktop\\kalendarz\\calendarapi\\calendarapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|solutionrelative:calendarapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|c:\\users\\micha\\desktop\\kalendarz\\calendarapi\\calendarapi\\dtos\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|solutionrelative:calendarapi\\dtos\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|c:\\users\\micha\\desktop\\kalendarz\\calendarapi\\calendarapi\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|solutionrelative:calendarapi\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|c:\\users\\micha\\desktop\\kalendarz\\calendarapi\\calendarapi\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|solutionrelative:calendarapi\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|c:\\users\\micha\\desktop\\kalendarz\\calendarapi\\calendarapi\\dtos\\userdetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|solutionrelative:calendarapi\\dtos\\userdetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|c:\\users\\micha\\desktop\\kalendarz\\calendarapi\\calendarapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|solutionrelative:calendarapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|c:\\users\\micha\\desktop\\kalendarz\\calendarapi\\calendarapi\\models\\word.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|solutionrelative:calendarapi\\models\\word.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|c:\\users\\micha\\desktop\\kalendarz\\calendarapi\\calendarapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|solutionrelative:calendarapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|c:\\users\\micha\\desktop\\kalendarz\\calendarapi\\calendarapi\\migrations\\20241230120112_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|solutionrelative:calendarapi\\migrations\\20241230120112_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|c:\\users\\micha\\desktop\\kalendarz\\calendarapi\\calendarapi\\migrations\\20250102161531_userauth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3E52E5D-2056-48A1-92CB-E054704573B7}|CalendarAPI\\CalendarAPI.csproj|solutionrelative:calendarapi\\migrations\\20250102161531_userauth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,82 +42,109 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "20241230120112_initial.cs",
-              "DocumentMoniker": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Migrations\\20241230120112_initial.cs",
-              "RelativeDocumentMoniker": "CalendarAPI\\Migrations\\20241230120112_initial.cs",
-              "ToolTip": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Migrations\\20241230120112_initial.cs",
-              "RelativeToolTip": "CalendarAPI\\Migrations\\20241230120112_initial.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAMAAAARAAAAAAAAAA==",
+              "Title": "UserDetailDto.cs",
+              "DocumentMoniker": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Dtos\\UserDetailDto.cs",
+              "RelativeDocumentMoniker": "CalendarAPI\\Dtos\\UserDetailDto.cs",
+              "ToolTip": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Dtos\\UserDetailDto.cs",
+              "RelativeToolTip": "CalendarAPI\\Dtos\\UserDetailDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-30T12:01:13.027Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Program.cs",
-              "RelativeDocumentMoniker": "CalendarAPI\\Program.cs",
-              "ToolTip": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Program.cs",
-              "RelativeToolTip": "CalendarAPI\\Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-30T11:09:54.354Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WordController.cs",
-              "DocumentMoniker": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Controllers\\WordController.cs",
-              "RelativeDocumentMoniker": "CalendarAPI\\Controllers\\WordController.cs",
-              "ToolTip": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Controllers\\WordController.cs",
-              "RelativeToolTip": "CalendarAPI\\Controllers\\WordController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowFYAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-30T10:20:09.765Z",
+              "WhenOpened": "2025-01-04T19:17:58.593Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Word.cs",
-              "DocumentMoniker": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Models\\Word.cs",
-              "RelativeDocumentMoniker": "CalendarAPI\\Models\\Word.cs",
-              "ToolTip": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Models\\Word.cs",
-              "RelativeToolTip": "CalendarAPI\\Models\\Word.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAqAAAAAAAAAA==",
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Dtos\\LoginDto.cs",
+              "RelativeDocumentMoniker": "CalendarAPI\\Dtos\\LoginDto.cs",
+              "ToolTip": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Dtos\\LoginDto.cs",
+              "RelativeToolTip": "CalendarAPI\\Dtos\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-29T14:03:54.106Z",
+              "WhenOpened": "2025-01-04T18:08:30.72Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Dtos\\AuthResponseDto.cs",
+              "RelativeDocumentMoniker": "CalendarAPI\\Dtos\\AuthResponseDto.cs",
+              "ToolTip": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Dtos\\AuthResponseDto.cs",
+              "RelativeToolTip": "CalendarAPI\\Dtos\\AuthResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T11:20:38.429Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "CalendarAPI\\appsettings.json",
-              "ToolTip": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\appsettings.json",
-              "RelativeToolTip": "CalendarAPI\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-12-29T10:58:33.82Z"
+              "Title": "RegisterDto.cs",
+              "DocumentMoniker": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Dtos\\RegisterDto.cs",
+              "RelativeDocumentMoniker": "CalendarAPI\\Dtos\\RegisterDto.cs",
+              "ToolTip": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Dtos\\RegisterDto.cs",
+              "RelativeToolTip": "CalendarAPI\\Dtos\\RegisterDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T11:13:23.949Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "CalendarAPI\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "CalendarAPI\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAKQAAAAAAAAAAAAkwLQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T11:07:59.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "CalendarAPI\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "CalendarAPI\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowCYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T16:29:56.732Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "20250102161531_UserAuth.cs",
+              "DocumentMoniker": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Migrations\\20250102161531_UserAuth.cs",
+              "RelativeDocumentMoniker": "CalendarAPI\\Migrations\\20250102161531_UserAuth.cs",
+              "ToolTip": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Migrations\\20250102161531_UserAuth.cs",
+              "RelativeToolTip": "CalendarAPI\\Migrations\\20250102161531_UserAuth.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T16:15:31.194Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "CalendarAPI\\Data\\AppDbContext.cs",
               "ToolTip": "C:\\Users\\micha\\Desktop\\Kalendarz\\CalendarAPI\\CalendarAPI\\Data\\AppDbContext.cs",
               "RelativeToolTip": "CalendarAPI\\Data\\AppDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABQAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-29T10:52:58.536Z",
+              "WhenOpened": "2025-01-02T16:13:33.74Z",
               "EditorCaption": ""
             }
           ]
