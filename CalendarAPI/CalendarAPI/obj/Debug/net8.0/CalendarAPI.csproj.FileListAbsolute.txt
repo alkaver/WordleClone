@@ -197,3 +197,9 @@ C:\Users\micha\Desktop\Kalendarz\CalendarAPI\CalendarAPI\obj\Debug\net8.0\static
 C:\Users\micha\Desktop\Kalendarz\CalendarAPI\CalendarAPI\obj\Debug\net8.0\staticwebassets\msbuild.CalendarAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\micha\Desktop\Kalendarz\CalendarAPI\CalendarAPI\obj\Debug\net8.0\CalendarAPI.sourcelink.json
 C:\Users\micha\Desktop\Kalendarz\CalendarAPI\CalendarAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\micha\Desktop\Kalendarz\CalendarAPI\CalendarAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\micha\Desktop\Kalendarz\CalendarAPI\CalendarAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\micha\Desktop\Kalendarz\CalendarAPI\CalendarAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\micha\Desktop\Kalendarz\CalendarAPI\CalendarAPI\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\micha\Desktop\Kalendarz\CalendarAPI\CalendarAPI\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\micha\Desktop\Kalendarz\CalendarAPI\CalendarAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

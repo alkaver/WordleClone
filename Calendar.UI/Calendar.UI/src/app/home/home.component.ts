@@ -37,8 +37,7 @@ export class HomeComponent {
       this.fillLetter(key);
     }
   }
-
-
+  
   grid: string[][] = this.rows.map(() => Array(5).fill('')); // Tablica przechowująca litery
   validationGrid: string[][] = this.rows.map(() => Array(5).fill('')); // Tablica do walidacji (klasy do kolorowania)
   currentRow = 0;
