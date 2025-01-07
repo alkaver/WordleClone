@@ -9,7 +9,8 @@
     .grid-row {
       display: contents;
     }
-  
+
+    
     .grid-cell {
       display: flex;
       align-items: center;
@@ -53,6 +54,7 @@
       cursor: pointer;
     }
   }
+  
   .keyboard {
     display: flex;
     flex-direction: column;
@@ -79,6 +81,21 @@
         &:hover {
           background-color: #565758;
         }
+
+        &.correct {
+          background-color: #538d4e;
+          border-color: #538d4e;
+        }
+  
+        &.present {
+          background-color: #b59f3b;
+          border-color: #b59f3b;
+        }
+  
+        &.absent {
+          background-color: #3a3a3c;
+          border-color: #3a3a3c;
+        }
       }
   
       .special-key {
@@ -91,6 +108,12 @@
         }
       }
     }
+  }
+  .win-message {
+    font-size: 24px;
+    color: green;
+    text-align: center;
+    margin-top: 20px;
   }
   
   

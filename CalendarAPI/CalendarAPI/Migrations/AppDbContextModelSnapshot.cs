@@ -145,9 +145,15 @@ namespace CalendarAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1",
+                            Id = "dc271b47-8760-45d3-8d53-4c7bee331151",
                             Name = "User",
                             NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "d393f3dd-38df-4cdd-a7ef-42dfae9731b3",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
                         });
                 });
 
