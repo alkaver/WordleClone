@@ -1,0 +1,17 @@
+<div class="ranking-container">
+    @if( (accountDetail$ | async); as accountDetail) {
+      <div class="stat">
+        <span class="value">{{ accountDetail.gamesPlayedTotal }}</span>
+        <span class="label"> Total Games Played</span>
+      </div>
+      <div class="stat">
+        <span class="value">{{ accountDetail.currentStreak }}</span>
+        <span class="label"> Current Streak</span>
+      </div>
+      <div class="stat">
+        <span class="value">{{ accountDetail.maxStreak }}</span>
+        <span class="label"> Max Streak</span>
+      </div>
+    }
+  </div>
+  

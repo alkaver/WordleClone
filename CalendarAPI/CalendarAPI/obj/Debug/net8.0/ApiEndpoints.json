@@ -1,23 +1,5 @@
 [
   {
-    "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_4",
-    "RelativePath": "",
-    "HttpMethod": "GET",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
     "ContainingType": "CalendarAPI.Controllers.AccountController",
     "Method": "GetUsers",
     "RelativePath": "api/Account",
@@ -110,6 +92,74 @@
     ]
   },
   {
+    "ContainingType": "CalendarAPI.Controllers.RolesContoller",
+    "Method": "AssignRole",
+    "RelativePath": "api/RolesContoller/assignRole",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleAssignDto",
+        "Type": "CalendarAPI.Dtos.RoleAssignDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CalendarAPI.Controllers.RolesContoller",
+    "Method": "CreateRole",
+    "RelativePath": "api/RolesContoller/createRole",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createRoleDto",
+        "Type": "CalendarAPI.Dtos.CreateRoleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CalendarAPI.Controllers.RolesContoller",
+    "Method": "DeleteRole",
+    "RelativePath": "api/RolesContoller/deleteRole",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CalendarAPI.Controllers.RolesContoller",
+    "Method": "GetRoles",
+    "RelativePath": "api/RolesContoller/getRoles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CalendarAPI.Dtos.RoleResponseDto, CalendarAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "CalendarAPI.Controllers.WordController",
     "Method": "SetWordOfTheDay",
     "RelativePath": "api/Word/setwordoftheday",
@@ -133,27 +183,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CalendarAPI.Controllers.AuthController",
-    "Method": "Login",
-    "RelativePath": "Auth/login",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "username",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "password",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
     "ReturnTypes": []
   }
 ]

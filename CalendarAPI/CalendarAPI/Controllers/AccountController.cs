@@ -1,5 +1,6 @@
 ﻿using CalendarAPI.Dtos;
 using CalendarAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using System.Text;
 
 namespace CalendarAPI.Controllers
 {
+    // [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
@@ -24,6 +26,8 @@ namespace CalendarAPI.Controllers
             this._roleManager = roleManager;
             _configuration = configuration;
         }
+
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult<string>> Register(RegisterDto registerDto)
         {
@@ -43,17 +47,9 @@ namespace CalendarAPI.Controllers
             {
                 return BadRequest(result.Errors);
             }
-            if(registerDto.Roles is null)
-            {
-                await _userManager.AddToRoleAsync(user, "User");
-            }
-            else
-            {
-                foreach (var role in registerDto.Roles)
-                {
-                    await _userManager.AddToRoleAsync(user, role);
-                }
-            }
+
+            await _userManager.AddToRoleAsync(user, "User");
+
             return Ok(new AuthResponseDto
             {
                 IsSuccess = true,
@@ -61,8 +57,9 @@ namespace CalendarAPI.Controllers
             });
 
         }
-        [HttpPost("login")]
 
+        [AllowAnonymous]
+        [HttpPost("login")]
         public async Task<ActionResult<AuthResponseDto>> Login(LoginDto loginDto)
         {
             if (!ModelState.IsValid)
@@ -101,6 +98,14 @@ namespace CalendarAPI.Controllers
         }
         private string GenerateToken(User user)
         {
+            var audience = _configuration["JWTSetting:ValidAudience"];
+            var issuer = _configuration["JWTSetting:ValidIssuer"];
+
+            if (string.IsNullOrEmpty(audience) || string.IsNullOrEmpty(issuer))
+            {
+                throw new Exception("JWT settings are not properly configured.");
+            }
+
             var tokenHandler = new JwtSecurityTokenHandler();
             var roles = _userManager.GetRolesAsync(user).Result;
             List<Claim> claims =
@@ -110,7 +115,6 @@ namespace CalendarAPI.Controllers
                 new (JwtRegisteredClaimNames.Aud, _configuration.GetSection("JWTSetting").GetSection("ValidAudience").Value!),
                 new (JwtRegisteredClaimNames.Iss, _configuration.GetSection("JWTSetting").GetSection("ValidIssuer").Value!)
                 ];
-
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWTSetting:SecurityKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -150,9 +154,10 @@ namespace CalendarAPI.Controllers
             {
                 Id = user.Id,
                 Email = user.Email,
-                Roles = [.. await _userManager.GetRolesAsync(user)], 
-                PhoneNumber = user.PhoneNumber,
-                PhoneNumberConfirmed = user.PhoneNumberConfirmed,
+                Roles = [.. await _userManager.GetRolesAsync(user)],
+                CurrentStreak = user.CurrentStreak,
+                MaxStreak = user.MaxStreak,
+                GamesPlayedTotal = user.GamesPlayedTotal,
                 AccessFailedCount = user.AccessFailedCount,
             });
         }

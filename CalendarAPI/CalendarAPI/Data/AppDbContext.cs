@@ -4,6 +4,7 @@ using System.Reflection.Emit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace CalendarAPI.Data
 {
@@ -11,6 +12,7 @@ namespace CalendarAPI.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Word> Words { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -18,9 +20,13 @@ namespace CalendarAPI.Data
             builder.Entity<IdentityRole>().HasData(
                 new IdentityRole
                 {
-                    Id = "1",
                     Name = "User",
                     NormalizedName = "USER"
+                },
+                new IdentityRole
+                {
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
                 }
             );
         }

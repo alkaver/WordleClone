@@ -1,0 +1,43 @@
+<div class="wordle-grid">
+    <div class="grid-row" *ngFor="let row of rows; let i = index">
+        <div class="grid-cell" *ngFor="let col of cols; let j = index"
+             [ngClass]="getCellClass(i, j)">
+            <p>{{ grid[i][j] }}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Wirtualna klawiatura -->
+<div class="keyboard">
+    <div class="keyboard-row">
+      <button *ngFor="let key of row1" 
+              [ngClass]="keyboardState[key] " 
+              (click)="onKeyClick(key)">
+        {{ key }}
+      </button>
+    </div>
+    <div class="keyboard-row">
+      <button *ngFor="let key of row2" 
+              [ngClass]="keyboardState[key]" 
+              (click)="onKeyClick(key)">
+        {{ key }}
+      </button>
+    </div>
+    <div class="keyboard-row">
+      <button *ngFor="let key of row3" 
+              [ngClass]="keyboardState[key] " 
+              (click)="onKeyClick(key)">
+        {{ key }}
+      </button>
+    </div>
+    <div class="keyboard-row">
+      <button class="special-key" (click)="onKeyClick('ENTER')">Enter</button>
+      <button class="special-key" (click)="onKeyClick('BACKSPACE')">⌫</button>
+    </div>
+  </div>
+  
+@if(gameWon){
+    <div class="win-message">
+        {{ winMessage }}
+    </div>
+}

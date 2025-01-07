@@ -1,0 +1,131 @@
+$error-color: #f44336;  // Jasna czerwień dla błędów
+$success-color: #2ecc71; // Zielony dla sukcesu
+$primary-color: #333;   // Kolor dla tła i tekstu
+$secondary-color: #f1f1f1;  // Tło formularza
+$border-radius: 8px;    // Zaokrąglone rogi formularza i przycisków
+$transition-speed: 0.3s; // Płynne przejścia
+$text-color: #ffffff;   // Jasny kolor tekstu na ciemnym tle
+$background-color: #212121; // Tło formularza
+$input-background-color: #333; // Tło inputów  --color-primary: #f00; /* any format you want here */
+$color-primary-darker: hsl(from var(--primary-color) h s calc(l - 5));
+$color-primary-darkest: hsl(from var(--primary-color) h s calc(l - 10));
+
+.auth-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 20px;
+  background-color: $background-color;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    color: $text-color;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .form-group {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+
+    label {
+      font-size: 14px;
+      color: $text-color;
+      margin-bottom: 5px;
+      display: inline-block;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #555;
+      border-radius: $border-radius;
+      background-color: $input-background-color;
+      color: $text-color;
+      transition: all $transition-speed ease;
+      box-sizing: border-box;
+
+      &.ng-invalid.ng-touched {
+        border-color: $error-color;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $color-primary-darker;
+        background-color: #444;
+      }
+      &:active {
+        border-color: $color-primary-darkest;
+      }
+
+      &::placeholder {
+        color: #bbb;
+      }
+    }
+
+    .error-message {
+      font-size: 14px;
+      color: $error-color;   // Jasna czerwień
+      position: absolute;
+      bottom: -18px;         // Wyświetlanie poniżej inputu
+      left: 0;
+      width: 100%;           // Szerokość wypełnia pole formularza
+      text-align: left;      // Wyrównanie tekstu do lewej
+      padding-left: 10px;    // Odstęp od lewej krawędzi
+      font-weight: 500;      // Wyróżnienie błędu
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: $border-radius;
+    background-color: $primary-color;
+    color: $text-color;
+    cursor: pointer;
+    transition: background-color $transition-speed ease;
+
+    &:hover {
+      background-color: $color-primary-darker;  // Używamy color.adjust
+    }
+    &:active {
+      background-color: $color-primary-darkest;
+    }
+
+    &[disabled] {
+      background-color: #888;
+      cursor: not-allowed;
+    }
+  }
+
+  .switch-mode {
+    margin-top: 10px;
+    color: $primary-color;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+
+    &:hover {
+      color: $color-primary-darker;  // Używamy color.adjust
+    }
+    &:active {
+      background-color: $color-primary-darkest;
+    }
+  }
+
+  .error-message {
+    font-size: 14px;
+    color: $error-color;
+    margin-top: 20px;
+    text-align: center;
+  }
+}
