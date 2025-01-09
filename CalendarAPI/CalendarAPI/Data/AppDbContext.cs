@@ -13,6 +13,14 @@ namespace CalendarAPI.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Word> Words { get; set; }
 
+        public DbSet<GameRecord> GameRecords { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            // Suppress the PendingModelChangesWarning
+            optionsBuilder.ConfigureWarnings(warnings => warnings.Ignore(Microsoft.EntityFrameworkCore.Diagnostics.RelationalEventId.PendingModelChangesWarning));
+        }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -29,6 +37,13 @@ namespace CalendarAPI.Data
                     NormalizedName = "ADMIN"
                 }
             );
+
+            // Relacja jeden-do-wielu
+            builder.Entity<GameRecord>()
+                .HasOne(g => g.User)
+                .WithMany(u => u.GameRecords)
+                .HasForeignKey(g => g.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

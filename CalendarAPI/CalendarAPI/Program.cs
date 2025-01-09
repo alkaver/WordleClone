@@ -85,6 +85,8 @@ builder.Services.AddAuthentication(options =>
 
 // Dodaj autoryzację
 builder.Services.AddAuthorization();
+builder.Services.AddHostedService<StreakResetService>();
+builder.Services.AddHostedService<WordOfTheDayBackgroundService>();
 
 var app = builder.Build();
 
