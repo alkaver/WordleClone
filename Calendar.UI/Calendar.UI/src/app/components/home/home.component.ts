@@ -1,6 +1,7 @@
 import { CommonModule, NgForOf} from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { WordsService } from '../../services/words.service';
+import { GamesService } from '../../services/games.service';
 
 @Component({
   selector: 'app-home',
@@ -12,21 +13,9 @@ export class HomeComponent {
   solution: string = '';
   gameWon: boolean = false;
   winMessage: string = '';
+  loseMessage: string ='';
+
   
-  // Stan liter na klawiaturze
-  keyboardState: { [key: string]: 'correct' | 'present' | 'absent' } = {};
-
-  constructor(private wordsService: WordsService) {}
-
-  ngOnInit(): void {
-    this.wordsService.getWord().subscribe(
-      (response: string) => {
-        this.solution = response.trim().toUpperCase();
-        console.log('Wylosowane słowo:', this.solution);
-      }
-    )
-  }
-
   rows = Array(6).fill(null);
   cols = Array(5).fill(null);
   row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
@@ -36,6 +25,23 @@ export class HomeComponent {
   grid: string[][] = this.rows.map(() => Array(5).fill(''));
   validationGrid: string[][] = this.rows.map(() => Array(5).fill(''));
   currentRow = 0;
+  
+  // Stan liter na klawiaturze
+  keyboardState: { [key: string]: 'correct' | 'present' | 'absent' } = {};
+
+  constructor(private wordsService: WordsService, private gamesService: GamesService) {}
+
+  ngOnInit(): void {
+    this.checkForMidnightReset();
+    this.loadGameState();
+    console.log(this.solution);
+    if (this.solution === '') {
+      this.wordsService.getWord().subscribe((response: string) => {
+        this.solution = response.trim().toUpperCase();
+        this.saveGameState();
+      });
+    }
+  }
 
   onKeyClick(key: string) {
     if (this.gameWon) {
@@ -99,12 +105,44 @@ export class HomeComponent {
     // Sprawdzenie, czy gracz wygrał
     if (this.validationGrid[this.currentRow].every(cell => cell === 'correct')) {
       this.gameWon = true;
-      this.winMessage = 'Gratulacje! Zgadłeś słowo!';
+      this.winMessage = 'Congratulations! You guessed the word! Come back tomorrow to play again!';
+      this.saveGameState();
+    
+      // Wywołanie API
+      this.gamesService.playGameResult(this.gameWon).subscribe({
+        next: (response) => {
+          console.log('Game result sent successfully:', response);
+        },
+        error: (err) => {
+          console.error('Error sending game result:', err);
+        }
+      });
     }
+
+    // Sprawdzenie, czy gracz przegrał
+    if (this.currentRow === 5 && !this.gameWon) {
+      this.gameWon = false;
+      this.loseMessage = `You lost! The correct word was: ${this.solution}. Come back tomorrow to try again!`;
+      this.saveGameState();
+
+      // Wywołanie API
+      this.gamesService.playGameResult(this.gameWon).subscribe({
+          next: (response) => {
+              console.log('Game result sent successfully:', response);
+          },
+          error: (err) => {
+              console.error('Error sending game result:', err);
+          }
+      });
+
+      return; // Nie przechodź do następnego wiersza
+  }
+    
 
     // Przejście do następnego wiersza, ale tylko jeśli nie ma wygranej
     if (!this.gameWon) {
       this.currentRow++;
+      this.saveGameState();
     }
   }
   
@@ -155,6 +193,57 @@ export class HomeComponent {
     }
     if (lastNonEmptyIndex >= 0) {
       this.grid[this.currentRow][lastNonEmptyIndex] = '';
+    }
+  }
+
+  // Zapisywanie stanu gry
+
+  saveGameState() {
+    const gameState = {
+      grid: this.grid,
+      validationGrid: this.validationGrid,
+      currentRow: this.currentRow,
+      gameWon: this.gameWon,
+      loseMessage: this.loseMessage,
+      winMessage: this.winMessage,
+      keyboardState: this.keyboardState,
+      timestamp: new Date().getTime()
+    };
+    localStorage.setItem('wordleGameState', JSON.stringify(gameState));
+  }
+
+  loadGameState() {
+    const savedState = localStorage.getItem('wordleGameState');
+    if (savedState) {
+      const gameState = JSON.parse(savedState);
+      this.grid = gameState.grid;
+      this.validationGrid = gameState.validationGrid;
+      this.currentRow = gameState.currentRow;
+      this.gameWon = gameState.gameWon;
+      this.loseMessage = gameState.loseMessage,
+      this.winMessage = gameState.winMessage;
+      this.keyboardState = gameState.keyboardState;
+    }
+  }
+  checkForMidnightReset() {
+    const savedState = localStorage.getItem('wordleGameState');
+    if (savedState) {
+      const gameState = JSON.parse(savedState);
+      const now = new Date();
+      const savedTime = new Date(gameState.timestamp);
+      console.log('Saved Timestamp:', gameState.timestamp);
+      console.log('Current Time:', new Date().getTime());
+
+      if (now.toDateString() !== savedTime.toDateString()) {
+        localStorage.removeItem('wordleGameState');
+        this.grid = this.rows.map(() => Array(5).fill(''));
+        this.validationGrid = this.rows.map(() => Array(5).fill(''));
+        this.currentRow = 0;
+        this.gameWon = false;
+        this.loseMessage = '',
+        this.winMessage = '';
+        this.keyboardState = {};
+      }
     }
   }
 }

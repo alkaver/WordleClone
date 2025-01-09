@@ -1,17 +1,28 @@
-<div class="ranking-container">
-    @if( (accountDetail$ | async); as accountDetail) {
-      <div class="stat">
-        <span class="value">{{ accountDetail.gamesPlayedTotal }}</span>
-        <span class="label"> Total Games Played</span>
-      </div>
-      <div class="stat">
-        <span class="value">{{ accountDetail.currentStreak }}</span>
-        <span class="label"> Current Streak</span>
-      </div>
-      <div class="stat">
-        <span class="value">{{ accountDetail.maxStreak }}</span>
-        <span class="label"> Max Streak</span>
-      </div>
-    }
+<div class="app-ranking">
+  <div class="header">
+    <i class="fa fa-chart-line icon-header"></i> <!-- Ikona wykresu -->
+    <h2>Your Stats</h2>
   </div>
+<div class="ranking-container">
+  @if( (accountDetail$ | async); as accountDetail) {
+    <div class="stat">
+      <span class="value">{{ accountDetail.currentStreak }}</span>
+      <span class="label"> Current Streak </span>
+      <i class="fa fa-fire icon-red"></i> <!-- Ikona ognia (symbolizująca streak) -->
+    </div>
+    <div class="stat">
+      <span class="value">{{ accountDetail.maxStreak }}</span>
+      <span class="label"> Max Streak </span>
+      <i class="fa fa-trophy icon-gold"></i> <!-- Ikona pucharu -->
+    </div>
+    <div class="stat">
+      <span class="value">{{ accountDetail.gamesPlayedTotal }}</span>
+      <span class="label"> Total Games Played </span>
+      <i class="fa fa-gamepad icon-grey"></i> <!-- Ikona gry -->
+    </div>
+  }
+</div>
   
+
+
+
