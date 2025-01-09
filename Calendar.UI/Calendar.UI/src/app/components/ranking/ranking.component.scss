@@ -1,23 +1,73 @@
+:host {
+  display: flex;
+  justify-content: center;  /* Wyrównanie w poziomie */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Ikona po lewej, tekst po prawej */
+  margin-bottom: 20px;
+}
+
+.header i {  
+  font-size: 3rem;
+  color: #FFD700;  /* Złota ikona */
+  margin-right: 50px;  /* Odstęp między ikoną a tekstem */
+}
+
+.header h2 {
+  font-size: 2.5rem;
+  color: #fff; /* Kolor tekstu nagłówka */
+  font-weight: bold;
+  margin: 0;
+}
 .ranking-container {
   display: flex;
+  justify-content: center;  
   flex-direction: column;
   align-items: center;
-  background-color: #f0f0f0;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  background-color: #333;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  width: 320px;
+  color: #fff;
 }
+
 .stat {
   text-align: center;
-  margin: 15px 0;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* Wyrównanie elementów z lewej i prawej strony */
+  width: 100%;
 }
+
 .value {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: bold;
-  color: #333;
+  color: #e1e1e1;
 }
+
 .label {
-  font-size: 1.1rem;
-  color: #666;
+  font-size: 1.2rem;
+  color: #bbb;
+  margin-left: 10px;
+}
+
+.stat i {  
+  font-size: 2.5rem;
+}
+
+/* Styl dla ikon */
+.icon-grey {
+  color:grey;  /* Ikona użytkowników - czarna */
+}
+
+.icon-gold {
+  color: #FFD700;  /* Ikona ognia i pucharu - złota */
+}
+.icon-red {
+  color: red;  /* Ikona ognia i pucharu - złota */
 }
