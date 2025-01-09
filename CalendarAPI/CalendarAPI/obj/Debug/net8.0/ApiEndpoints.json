@@ -92,6 +92,22 @@
     ]
   },
   {
+    "ContainingType": "CalendarAPI.Controllers.GameController",
+    "Method": "PlayGame",
+    "RelativePath": "api/Game/play",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "result",
+        "Type": "CalendarAPI.Dtos.GameResultDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CalendarAPI.Controllers.RolesContoller",
     "Method": "AssignRole",
     "RelativePath": "api/RolesContoller/assignRole",
