@@ -1,0 +1,58 @@
+name: dockercompose1655461680857233458
+services:
+  calendarapi:
+    build:
+      context: C:\Users\micha\Desktop\Kalendarz\CalendarAPI
+      dockerfile: CalendarAPI/Dockerfile
+    container_name: calendarapi
+    depends_on:
+      database:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "5000"
+      ASPNETCORE_HTTPS_PORTS: "7059"
+      DatabaseConnection: Server=Server=127.0.0.1, 1433;Database=CalendarDb;user id=sa;Integrated Security=False;password=YourStrong!Passw0rd;Trusted_Connection=false;TrustServerCertificate=True;
+    image: calendarapi
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 5000
+        published: "5000"
+        protocol: tcp
+      - mode: ingress
+        target: 7059
+        published: "7059"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: C:\Users\micha\AppData\Roaming/Microsoft/UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\micha\AppData\Roaming/ASP.NET/Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+  database:
+    container_name: database
+    environment:
+      ACCEPT_EULA: "Y"
+      MYSQL_DATABASE: CalendarDB
+      SA_PASSWORD: YourStrong!Passw0rd
+    image: mcr.microsoft.com/mssql/server:latest
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 1433
+        published: "1433"
+        protocol: tcp
+networks:
+  default:
+    name: dockercompose1655461680857233458_default
