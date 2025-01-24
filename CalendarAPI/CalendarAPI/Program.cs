@@ -3,7 +3,9 @@ using CalendarAPI.Data;
 using CalendarAPI.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -48,7 +50,7 @@ builder.Services.AddSwaggerGen(options =>
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DockerConnection")));
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "AllowSpecificOrigins",
@@ -89,6 +91,14 @@ builder.Services.AddHostedService<StreakResetService>();
 builder.Services.AddHostedService<WordOfTheDayBackgroundService>();
 
 var app = builder.Build();
+
+//using IServiceScope scope = app.Services.CreateScope();
+//using AppDbContext context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
 namespace CalendarAPI
 {
     public class WordOfTheDayBackgroundService : BackgroundService
@@ -22,13 +23,15 @@ namespace CalendarAPI
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            await UpdateWordOfTheDayAsync(stoppingToken); // Użycie tokena anulowania
+            // Czekamy do pierwszego uruchomienia
+            await UpdateWordOfTheDayAsync(stoppingToken);
+
             while (!stoppingToken.IsCancellationRequested)
             {
                 var currentTime = DateTime.UtcNow;
                 var midnightTime = DateTime.UtcNow.Date.AddDays(1);
-
                 var timeUntilMidnight = midnightTime - currentTime;
+
                 _logger.LogInformation("Waiting until next midnight to update Word of the Day...");
 
                 // Czekaj do północy
@@ -45,35 +48,49 @@ namespace CalendarAPI
             {
                 var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
-                var wordsList = new List<string>
+                try
                 {
-                    "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon"
-                };
-
-                var randomIndex = new Random().Next(wordsList.Count);
-                var wordOfTheDay = wordsList[randomIndex];
-
-                // Sprawdzenie, czy słowo dnia już istnieje w bazie dla dzisiejszego dnia
-                var existingWord = await context.Words
-                    .Where(w => w.Date.Date == DateTime.UtcNow.Date)
-                    .FirstOrDefaultAsync(stoppingToken);
-
-                if (existingWord == null)
-                {
-                    var newWord = new Word
+                    // Sprawdzenie, czy baza danych jest dostępna
+                    if (!await context.Database.CanConnectAsync(stoppingToken))
                     {
-                        WordOfTheDay = wordOfTheDay,
-                        Date = DateTime.UtcNow
+                        _logger.LogWarning("Database is not available. Skipping Word of the Day update.");
+                        return; // Zakończ metodę, jeśli nie ma połączenia z bazą
+                    }
+
+                    var wordsList = new List<string>
+                    {
+                        "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon"
                     };
 
-                    context.Words.Add(newWord);
-                    await context.SaveChangesAsync(stoppingToken);
+                    var randomIndex = new Random().Next(wordsList.Count);
+                    var wordOfTheDay = wordsList[randomIndex];
 
-                    _logger.LogInformation($"Word of the Day has been set to: {wordOfTheDay}");
+                    // Sprawdzenie, czy słowo dnia już istnieje w bazie dla dzisiejszego dnia
+                    var existingWord = await context.Words
+                        .Where(w => w.Date.Date == DateTime.UtcNow.Date)
+                        .FirstOrDefaultAsync(stoppingToken);
+
+                    if (existingWord == null)
+                    {
+                        var newWord = new Word
+                        {
+                            WordOfTheDay = wordOfTheDay,
+                            Date = DateTime.UtcNow
+                        };
+
+                        context.Words.Add(newWord);
+                        await context.SaveChangesAsync(stoppingToken);
+
+                        _logger.LogInformation($"Word of the Day has been set to: {wordOfTheDay}");
+                    }
+                    else
+                    {
+                        _logger.LogInformation($"Word of the Day already set for today: {existingWord.WordOfTheDay}");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    _logger.LogInformation($"Word of the Day already set for today: {existingWord.WordOfTheDay}");
+                    _logger.LogError(ex, "An error occurred while updating the Word of the Day.");
                 }
             }
         }
