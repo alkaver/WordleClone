@@ -105,7 +105,7 @@ export class HomeComponent {
     // Sprawdzenie, czy gracz wygrał
     if (this.validationGrid[this.currentRow].every(cell => cell === 'correct')) {
       this.gameWon = true;
-      this.winMessage = 'Congratulations! You guessed the word! Come back tomorrow to play again!';
+      this.winMessage = '🎉 Fantastic job! You guessed the word correctly! 🎉\nCome back tomorrow for a new challenge!';
       this.saveGameState();
     
       // Wywołanie API

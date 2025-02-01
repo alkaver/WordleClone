@@ -6,3 +6,29 @@ html, body {
 * {
     outline:none;
 }
+
+/* Dostosowanie scrollbara dla przeglądarek opartych na WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px; /* Szerokość scrollbara */
+}
+
+::-webkit-scrollbar-track {
+    background: #2d2d2d; /* Tło scrollbara */
+    border-radius: 6px; /* Zaokrąglenie krawędzi */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #757575; /* Kolor "kciuka" scrollbara */
+    border-radius: 6px; /* Zaokrąglenie krawędzi */
+    border: 3px solid #2d2d2d; /* Obramowanie, aby pasowało do tła */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #bb86fc; /* Kolor "kciuka" po najechaniu */
+}
+
+/* Dostosowanie scrollbara dla przeglądarek opartych na Firefox */
+* {
+    scrollbar-width: thin; /* Szerokość scrollbara */
+    scrollbar-color: #757575 #2d2d2d; /* Kolor "kciuka" i tła */
+}

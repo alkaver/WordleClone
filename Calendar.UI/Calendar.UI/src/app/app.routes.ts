@@ -18,6 +18,11 @@ export const routes: Routes = [
           import('./components/auth/auth.component').then((m) => m.AuthComponent)
       },
     {
+        path: 'instruction',
+        loadComponent: () =>
+          import('./components/instruction/instruction.component').then((m) => m.InstructionComponent)
+      },
+    {
         path:'ranking',
         loadComponent: () =>
         {
