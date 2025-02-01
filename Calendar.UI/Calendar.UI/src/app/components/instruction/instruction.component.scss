@@ -1,0 +1,90 @@
+/* Ciemny motyw */
+:host
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.instructions-container {
+    max-width: 800px;
+    width: 90%;
+    padding: 20px;
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 20px;
+    overflow-y: auto;
+    max-height: 70vh; /* Ogranicza wysokość, aby zmieścić się na ekranie */
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #bb86fc; /* Jasny fioletowy dla nagłówków */
+    margin-top: 15px;
+}
+
+p {
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+    color: #e0e0e0;
+}
+
+.example {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #3d3d3d;
+    border-radius: 4px;
+}
+
+.example p {
+    margin: 0 0 10px 0;
+}
+
+.example span {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.correct {
+    background-color: #4caf50; /* Zielony */
+    color: #fff;
+}
+
+.present {
+    background-color: #ffeb3b; /* Żółty */
+    color: #000;
+}
+
+.absent {
+    background-color: #757575; /* Szary */
+    color: #fff;
+}

@@ -56,12 +56,13 @@ namespace CalendarAPI
                         _logger.LogWarning("Database is not available. Skipping Word of the Day update.");
                         return; // Zakończ metodę, jeśli nie ma połączenia z bazą
                     }
-
-                    var wordsList = new List<string>
+                    var filePath = Path.Combine(AppContext.BaseDirectory, "words.txt");
+                    var wordsList = File.ReadAllLines(filePath).Select(word=>word.Trim()).Where(word => word.Length == 5).Where(word=>!string.IsNullOrEmpty(word)).ToList();
+                    if (!wordsList.Any())
                     {
-                        "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon"
-                    };
-
+                        _logger.LogError("no valid words of length 5");
+                        return;
+                    }
                     var randomIndex = new Random().Next(wordsList.Count);
                     var wordOfTheDay = wordsList[randomIndex];
 
