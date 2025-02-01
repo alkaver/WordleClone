@@ -1,28 +1,28 @@
 <div class="auth-container">
-  <h2>{{ isLoginMode ? 'Logowanie' : 'Rejestracja' }}</h2>
+  <h2>{{ isLoginMode ? 'Login' : 'Register' }}</h2>
   
   <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
     <div>
       <label for="email">Email:</label>
       <input type="email" id="email" formControlName="email" />
       <div *ngIf="authForm.get('email')?.invalid && authForm.get('email')?.touched">
-        Wprowadź poprawny adres email.
+        Please enter a valid email address.
       </div>
     </div>
 
     <div>
-      <label for="password">Hasło:</label>
+      <label for="password">Password:</label>
       <input type="password" id="password" formControlName="password" />
       <div *ngIf="authForm.get('password')?.invalid && authForm.get('password')?.touched">
-        Hasło musi mieć co najmniej 9 znaków, jedną wielką literę, cyfrę i znak specjalny.
+        Password must be at least 9 characters long, include one uppercase letter, one digit, and one special character.
       </div>
     </div>
 
     <button type="submit" [disabled]="authForm.invalid">
-      {{ isLoginMode ? 'Zaloguj' : 'Zarejestruj' }}
+      {{ isLoginMode ? 'Login' : 'Register' }}
     </button>
     <button type="button" (click)="onSwitchMode()">
-      Przełącz na {{ isLoginMode ? 'Rejestrację' : 'Logowanie' }}
+      Switch to {{ isLoginMode ? 'Register' : 'Login' }}
     </button>
   </form>
 
