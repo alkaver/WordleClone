@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/CalendarAPIService/apis/CalendarAPI",
+      "type": "apis.azure"
+    },
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('serviceConnectorResourceGroupName')]/providers/Microsoft.Web/sites/CalendarAPI20250611130613/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsProdConnection_123E208F4D",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/calendarapidbserver/databases/CalendarAPI_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:ProdConnection",
+      "dynamicId": null
+    }
+  }
+}

@@ -1,4 +1,6 @@
-﻿using CalendarAPI.Dtos;
+﻿using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using CalendarAPI.Dtos;
 using CalendarAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -115,8 +117,7 @@ namespace CalendarAPI.Controllers
                 new (JwtRegisteredClaimNames.Aud, _configuration.GetSection("JWTSetting").GetSection("ValidAudience").Value!),
                 new (JwtRegisteredClaimNames.Iss, _configuration.GetSection("JWTSetting").GetSection("ValidIssuer").Value!)
                 ];
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWTSetting:SecurityKey"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["SecurityKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             foreach (var role in roles)

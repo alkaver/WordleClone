@@ -1,4 +1,6 @@
-﻿using CalendarAPI;
+﻿using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using CalendarAPI;
 using CalendarAPI.Data;
 using CalendarAPI.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -25,8 +27,8 @@ builder.Services.AddSwaggerGen(options =>
         Description = @"Enter 'Bearer' [space] your token",
         Name = "Authorization",
         In = ParameterLocation.Header,
-        Type = SecuritySchemeType.Http,
-        Scheme = "Bearer"
+        Type = SecuritySchemeType.ApiKey,  
+        Scheme = "Bearer"                  
     });
 
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -39,9 +41,9 @@ builder.Services.AddSwaggerGen(options =>
                     Type = ReferenceType.SecurityScheme,
                     Id = "Bearer"
                 },
-                Scheme = "Bearer",  // <- poprawione
-                Name = "Bearer",
                 In = ParameterLocation.Header,
+                Name = "Authorization",
+                Type = SecuritySchemeType.ApiKey 
             },
             new List<string>()
         }
@@ -49,8 +51,24 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 
-builder.Services.AddDbContext<AppDbContext>(options =>
+var keyVaultUrl = builder.Configuration["KeyVault:KeyVaultURL"];
+var secretClient = new SecretClient(new Uri(keyVaultUrl), new DefaultAzureCredential());
+builder.Configuration.AddAzureKeyVault(
+    new Uri(keyVaultUrl),
+    new DefaultAzureCredential());
+
+if (builder.Environment.IsProduction())
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlServer(builder.Configuration["ProdConnection"]));
+}
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DockerConnection")));
+}
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "AllowSpecificOrigins",
@@ -77,9 +95,9 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["JWTSetting:ValidIssuer"],  // Zmieniono _configuration na builder.Configuration
-        ValidAudience = builder.Configuration["JWTSetting:ValidAudience"],  // Zmieniono _configuration na builder.Configuration
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWTSetting:SecurityKey"]))  // Zmieniono _configuration na builder.Configuration
+        ValidIssuer = builder.Configuration["JWTSetting:ValidIssuer"],
+        ValidAudience = builder.Configuration["JWTSetting:ValidAudience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["SecurityKey"]))
     };
 });
 
@@ -94,22 +112,27 @@ var app = builder.Build();
 
 //using IServiceScope scope = app.Services.CreateScope();
 //using AppDbContext context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+app.UseSwagger();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
+    if(db.Database.IsRelational())
+    {
+        db.Database.Migrate();
+    }
 }
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.UseCors("AllowSpecificOrigins");
 
