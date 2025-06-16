@@ -9,6 +9,11 @@ import { AuthResponse } from '../interfaces/auth-response';
 import { jwtDecode } from 'jwt-decode';
 import { UserDetail } from '../interfaces/user-detail';
 
+interface JwtPayload {
+  exp: number;
+  role?: string | string[]; 
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -63,6 +68,30 @@ export class AuthService {
   logout() {
     localStorage.removeItem(this.tokenKey);
   }
+
+    getUserRoles(): string[] {
+    const token = this.getToken();
+    if (!token) return [];
+    
+    try {
+      const decoded = jwtDecode<JwtPayload>(token);
+      if (!decoded.role) return [];
+
+      if (Array.isArray(decoded.role)) {
+        return decoded.role;
+      }
+      return [decoded.role];
+    } catch {
+      return [];
+    }
+  }
+
+  isAdmin(): boolean {
+    return this.getUserRoles().includes('Admin');
+  }
+  getAllUsers(): Observable<UserDetail[]> {
+  return this.http.get<UserDetail[]>(`${environment.apiUrl}/${this.Url}`);
+}
 }
 
 
