@@ -163,7 +163,7 @@ namespace CalendarAPI.Controllers
             });
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDetailDto>>> GetUsers()
         {
@@ -179,7 +179,11 @@ namespace CalendarAPI.Controllers
                 {
                     Id = user.Id,
                     Email = user.Email,
-                    Roles = roles.ToArray() 
+                    Roles = roles.ToArray(),
+                    CurrentStreak = user.CurrentStreak,
+                    MaxStreak = user.MaxStreak,
+                    GamesPlayedTotal = user.GamesPlayedTotal,
+                    AccessFailedCount = user.AccessFailedCount,
                 });
             }
 

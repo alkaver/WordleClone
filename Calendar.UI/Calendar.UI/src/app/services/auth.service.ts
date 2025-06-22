@@ -8,6 +8,7 @@ import { LoginRequest } from '../interfaces/login-request';
 import { AuthResponse } from '../interfaces/auth-response';
 import { jwtDecode } from 'jwt-decode';
 import { UserDetail } from '../interfaces/user-detail';
+import { signal } from '@angular/core';
 
 interface JwtPayload {
   exp: number;
@@ -20,6 +21,7 @@ interface JwtPayload {
 export class AuthService {
   private Url = 'Account';  // Główny URL API
   private tokenKey = 'token';
+  readonly userRoles = signal<string[]>([]);
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -30,6 +32,7 @@ export class AuthService {
         if(response.isSuccess)
         {
           localStorage.setItem(this.tokenKey,response.token);
+          this.updateUserRoles(); 
         // Odczytaj returnUrl z localStorage
         const returnUrl = localStorage.getItem('returnUrl') || '/ranking';
         this.router.navigate([returnUrl]);
@@ -68,27 +71,36 @@ export class AuthService {
   logout() {
     localStorage.removeItem(this.tokenKey);
   }
+  
+  updateUserRoles(): void {
+  const token = this.getToken();
+  if (!token) return;
+  let roles: string[] = [];
 
-    getUserRoles(): string[] {
-    const token = this.getToken();
-    if (!token) return [];
-    
-    try {
-      const decoded = jwtDecode<JwtPayload>(token);
-      if (!decoded.role) return [];
+  try {
+    const decoded = jwtDecode<JwtPayload>(token);
+    const rawRole = decoded.role;
 
-      if (Array.isArray(decoded.role)) {
-        return decoded.role;
-      }
-      return [decoded.role];
-    } catch {
-      return [];
+    if (Array.isArray(rawRole)) {
+      roles = rawRole;
+    } else if (typeof rawRole === 'string') {
+      roles = [rawRole];
     }
+  } catch {
+    roles = [];
   }
 
-  isAdmin(): boolean {
-    return this.getUserRoles().includes('Admin');
-  }
+  this.userRoles.set(roles);
+}
+
+getUserRoles(): string[] {
+  return this.userRoles();
+}
+
+isAdmin(): boolean {
+  return this.userRoles().includes('Admin');
+}
+
   getAllUsers(): Observable<UserDetail[]> {
   return this.http.get<UserDetail[]>(`${environment.apiUrl}/${this.Url}`);
 }

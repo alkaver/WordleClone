@@ -1,10 +1,11 @@
-<h2>Admin Panel – Users</h2>
+<h2>Admin Panel</h2>
 
-@if (loading) {
-  <div>Loading data...</div>
-} @else if (error) {
-  <div class="error">{{ error }}</div>
-} @else if (users.length > 0) {
+<h3>Users</h3>
+@if (loadingUsers()) {
+  <p>Loading users...</p>
+} @else if (errorUsers()) {
+  <p class="error">{{ errorUsers() }}</p>
+} @else if (users().length > 0) {
   <table class="users-table">
     <thead>
       <tr>
@@ -17,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (user of users; track user.email) {
+      @for (user of users(); track user.email) {
         <tr>
           <td>{{ user.email }}</td>
           <td>{{ user.roles.join(', ') }}</td>
@@ -30,5 +31,44 @@
     </tbody>
   </table>
 } @else {
-  <div>No data to display.</div>
+  <p>No user data available.</p>
 }
+
+<hr>
+
+<h3>Roles</h3>
+@if (loadingRoles()) {
+  <p>Loading roles...</p>
+} @else if (errorRoles()) {
+  <p class="error">{{ errorRoles() }}</p>
+} @else {
+  <ul>
+    @for (role of roles(); track role.name) {
+      <li>
+        <strong>{{ role.name }}</strong> ({{ role.totalUsers }} users)
+        <button (click)="deleteRole(role.name)">Delete</button>
+      </li>
+    }
+  </ul>
+}
+
+<h4>Create New Role</h4>
+<input [(ngModel)]="newRoleName" placeholder="Role name">
+<button (click)="createRole()">Create Role</button>
+
+<h4>Assign Role to User</h4>
+<select [(ngModel)]="selectedUserId">
+  <option disabled value="">-- select user --</option>
+  @for (user of users(); track user.id) {
+    <option [value]="user.id">{{ user.email }}</option>
+  }
+</select>
+
+<select [(ngModel)]="selectedRoleName">
+  <option disabled value="">-- select role --</option>
+  @for (role of roles(); track role.name) {
+    <option [value]="role.name">{{ role.name }}</option>
+  }
+</select>
+
+<button (click)="assignRole()">Assign Role</button>

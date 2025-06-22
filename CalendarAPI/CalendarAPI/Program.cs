@@ -120,6 +120,10 @@ using (var scope = app.Services.CreateScope())
     {
         db.Database.Migrate();
     }
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
+    await SeedAdminAsync(userManager, roleManager, configuration);
 }
 
 // Configure the HTTP request pipeline.
@@ -140,3 +144,40 @@ app.UseCors("AllowSpecificOrigins");
 app.MapControllers();
 
 app.Run();
+
+static async Task SeedAdminAsync(
+    UserManager<User> userManager,
+    RoleManager<IdentityRole> roleManager,
+    IConfiguration configuration)
+{
+    string adminEmail = configuration["AdminEmail"];
+    string adminPassword = configuration["AdminPassword"];
+
+    if (string.IsNullOrWhiteSpace(adminEmail) || string.IsNullOrWhiteSpace(adminPassword))
+        throw new InvalidOperationException("Admin credentials are missing in configuration.");
+
+    if (!await roleManager.RoleExistsAsync("Admin"))
+    {
+        await roleManager.CreateAsync(new IdentityRole("Admin"));
+    }
+
+    var admin = await userManager.FindByEmailAsync(adminEmail);
+    if (admin == null)
+    {
+        admin = new User
+        {
+            UserName = adminEmail,
+            Email = adminEmail,
+            EmailConfirmed = true
+        };
+        var result = await userManager.CreateAsync(admin, adminPassword);
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(admin, "Admin");
+        }
+        else
+        {
+            throw new Exception($"Admin creation failed: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+        }
+    }
+}
